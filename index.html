@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b1220">
+    <meta name="description" content="SONORA: laboratorio interattivo di acustica. Esplora onde, fase, sovrapposizione, battimenti e microfoni.">
+  <title>SONORA — Laboratorio di acustica</title>
+  <link rel="icon" href="assets/sonora-mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Navigazione principale">
+      <a class="brand" href="#home" data-view-link="home" aria-label="SONORA, pagina iniziale">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 44 44" fill="none"><path d="M5 23h5l4-11 6 22 6-17 4 11 4-5h5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+        <span><strong>SONORA</strong><small>LABORATORIO DI ACUSTICA</small></span>
+      </a>
+
+      <div class="sidebar-label">SPAZIO DI LAVORO</div>
+      <nav class="main-nav">
+        <button class="nav-item active" data-view="home"><span class="nav-icon">⌂</span><span>Home</span></button>
+        <button class="nav-item" data-view="labs"><span class="nav-icon">⌁</span><span>Lab</span><span class="nav-count">3</span></button>
+        <button class="nav-item" data-view="review"><span class="nav-icon">✓</span><span>Ripasso</span></button>
+        <button class="nav-item" data-view="formulas"><span class="nav-icon">∑</span><span>Formulario</span></button>
+      </nav>
+
+      <div class="sidebar-label lessons-label">PERCORSO</div>
+      <div class="lesson-nav">
+        <button class="lesson-nav-item" data-lesson="1"><span class="lesson-index done">01</span><span><b>Il suono</b><small>Fondamenti</small></span><span class="lesson-check">✓</span></button>
+        <button class="lesson-nav-item" data-lesson="2"><span class="lesson-index done">02</span><span><b>L'onda sonora</b><small>Periodo e frequenza</small></span><span class="lesson-check">✓</span></button>
+        <button class="lesson-nav-item" data-lesson="3"><span class="lesson-index done">03</span><span><b>La fase</b><small>Sovrapposizione</small></span><span class="lesson-check">✓</span></button>
+        <button class="lesson-nav-item" data-lesson="4"><span class="lesson-index current">04</span><span><b>Battimenti</b><small>Interferenza</small></span><span class="lesson-pulse"></span></button>
+      </div>
+
+      <div class="sidebar-bottom">
+        <div class="device-note"><span class="status-dot"></span><span>Progressi salvati su questo dispositivo</span></div>
+        <div class="sidebar-foot">Materiale di studio<br>e laboratorio.</div>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div class="breadcrumb"><span>SONORA</span><i>/</i><strong id="breadcrumb-current">Panoramica</strong></div>
+        <div class="topbar-right"><span class="online-dot"></span><span>Area di studio</span><button class="icon-button" id="reset-progress" title="Azzera i progressi locali" aria-label="Azzera i progressi locali">↺</button></div>
+      </header>
+
+      <section class="view active" id="view-home">
+        <div class="welcome-row">
+          <div>
+            <div class="eyebrow"><span class="eyebrow-line"></span> PERCORSO DI ACUSTICA</div>
+            <h1>Acustica: <span>lezioni e strumenti.</span></h1>
+            <p class="intro">Materiale di ripasso e simulazioni sui temi affrontati a lezione.</p>
+          </div>
+          <div class="date-card"><span class="date-spark">SONORA</span><span>ACCESSO LOCALE</span><b>Progressi salvati nel browser.</b></div>
+        </div>
+
+        <div class="hero-grid">
+          <article class="hero-card phase-hero">
+            <div class="hero-card-top"><span class="tag tag-teal">LABORATORIO INTERATTIVO</span><span class="card-arrow">↗</span></div>
+            <div class="mini-wave" aria-hidden="true"><svg viewBox="0 0 460 92" preserveAspectRatio="none"><path d="M0 46 C18 5 38 5 56 46 S94 87 112 46 S150 5 168 46 S206 87 224 46 S262 5 280 46 S318 87 336 46 S374 5 392 46 S430 87 448 46"/><path class="wave-secondary" d="M0 46 C18 5 38 5 56 46 S94 87 112 46 S150 5 168 46 S206 87 224 46 S262 5 280 46 S318 87 336 46 S374 5 392 46 S430 87 448 46" transform="translate(0 0)"/></svg></div>
+            <div class="hero-card-copy"><span class="hero-kicker">LEZIONE 03 · FASE</span><h2>Confronto di fase</h2><p>Modifica la fase relativa e confronta le due onde con la loro somma.</p><button class="button button-light" data-open-lab="phase">Apri il laboratorio <span>→</span></button></div>
+          </article>
+          <article class="hero-card beat-hero">
+            <div class="hero-card-top"><span class="tag tag-gold">LEZIONE 04</span><span class="card-arrow">↗</span></div>
+            <div class="beat-illustration" aria-hidden="true"><div class="beat-line beat-a"></div><div class="beat-line beat-b"></div><div class="beat-envelope"></div></div>
+            <div class="hero-card-copy"><span class="hero-kicker">LEZIONE 04 · BATTIMENTI</span><h2>Battimenti</h2><p>Modifica due frequenze vicine e osserva la variazione dell'ampiezza risultante.</p><button class="button button-outline" data-open-lab="beats">Apri il laboratorio <span>→</span></button></div>
+          </article>
+        </div>
+        <article class="panel mic-shortcut">
+          <div><span class="eyebrow">NUOVO LABORATORIO</span><h2>Posizionamento dei microfoni</h2><p>Sposta due microfoni rispetto a una sorgente e confronta distanza, ritardo e fase dei segnali ricevuti.</p></div>
+          <button class="button button-primary" data-open-lab="microphones">Apri il laboratorio <span>→</span></button>
+        </article>
+
+        <div class="section-heading"><div><div class="eyebrow">PERCORSO</div><h2>Le lezioni</h2></div><span class="muted small">4 moduli</span></div>
+        <div class="lesson-grid">
+          <button class="lesson-card" data-lesson="1"><div class="lesson-card-head"><span class="lesson-index done">01</span><span class="state-pill complete">BASE</span></div><h3>Che cos'è il suono?</h3><p>Sorgente, propagazione, ricezione, vibrazione, frequenza, ampiezza e timbro.</p><div class="lesson-card-foot"><span>Fondamenti</span><span class="lesson-card-arrow">↗</span></div></button>
+          <button class="lesson-card" data-lesson="2"><div class="lesson-card-head"><span class="lesson-index done">02</span><span class="state-pill complete">BASE</span></div><h3>Le caratteristiche dell'onda</h3><p>Periodo, frequenza, lunghezza d'onda e velocità di propagazione.</p><div class="lesson-card-foot"><span>Descrivere un'onda</span><span class="lesson-card-arrow">↗</span></div></button>
+          <button class="lesson-card" data-lesson="3"><div class="lesson-card-head"><span class="lesson-index done">03</span><span class="state-pill complete">BASE</span></div><h3>Fase e sovrapposizione</h3><p>Fase iniziale, fase istantanea, ritardo, interferenza e somma delle onde.</p><div class="lesson-card-foot"><span>Relazioni tra onde</span><span class="lesson-card-arrow">↗</span></div></button>
+          <button class="lesson-card lesson-card-current" data-lesson="4"><div class="lesson-card-head"><span class="lesson-index current">04</span><span class="state-pill current-pill">IN CORSO</span></div><h3>Interferenza e battimenti</h3><p>Frequenze vicine, inviluppo, formula di prostaferesi e accordatura.</p><div class="lesson-card-foot"><span>Interazione sonora</span><span class="lesson-card-arrow">↗</span></div></button>
+        </div>
+
+        <div class="bottom-grid">
+          <article class="panel progress-panel"><div class="panel-heading"><div><span class="eyebrow">RIPASSO</span><h3>La tua attività</h3></div><span class="panel-symbol">◷</span></div><div class="progress-stats"><div><strong id="stat-answered">0</strong><span>risposte date</span></div><div><strong id="stat-correct">0%</strong><span>risposte corrette</span></div><div><strong id="stat-labs">0</strong><span>laboratori aperti</span></div></div><div class="progress-bar"><span id="progress-fill"></span></div><div class="progress-caption"><span id="progress-caption">Nessuna attività registrata.</span><button class="text-button" data-view="review">Vai al ripasso →</button></div></article>
+          <article class="panel formula-teaser"><div class="panel-heading"><div><span class="eyebrow">FORMULA DEL GIORNO</span><h3>Frequenza di battimento</h3></div><span class="formula-icon">ƒ</span></div><div class="formula-large">f<sub>b</sub> = |f<sub>1</sub> − f<sub>2</sub>|</div><p>La frequenza della pulsazione è pari al valore assoluto della differenza tra le due frequenze.</p><button class="text-button" data-view="formulas">Apri il formulario →</button></article>
+        </div>
+      </section>
+
+      <section class="view" id="view-labs">
+        <div class="page-heading"><div class="eyebrow"><span class="eyebrow-line"></span> LABORATORI INTERATTIVI</div><h1>Laboratori</h1><p class="intro">Ogni laboratorio mostra il risultato e spiega perché si verifica.</p></div>
+        <div class="lab-tabs"><button class="lab-tab active" data-lab="phase">01 · Fase</button><button class="lab-tab" data-lab="beats">02 · Battimenti</button><button class="lab-tab" data-lab="microphones">03 · Microfoni</button></div>
+
+        <div class="lab-view active" id="lab-phase">
+          <div class="lab-title-row"><div><span class="tag tag-teal">LEZIONE 03 · FASE</span><h2>Confronto di fase</h2><p>Due sinusoidi, stessa frequenza. Cambia la fase della seconda e osserva la somma.</p></div><div class="lab-title-actions"><button class="text-button" data-review-from-lab="3">Ripassa teoria 03 →</button><div class="live-indicator"><span></span> CALCOLO AUTOMATICO</div></div></div>
+          <div class="lab-layout">
+            <div class="panel controls-panel">
+              <div class="panel-heading"><div><span class="eyebrow">PARAMETRI</span><h3>Configura le onde</h3></div><span class="control-glyph">⌘</span></div>
+              <div class="control-group"><div class="control-label"><label for="phase-shift">Differenza di fase <span class="math-inline">Δφ</span></label><output id="phase-value">90°</output></div><input id="phase-shift" type="range" min="0" max="360" step="1" value="90"><div class="range-ends"><span>0° · in fase</span><span>360° · un ciclo</span></div><div class="preset-row"><button data-phase-preset="0">0°</button><button data-phase-preset="90" class="selected">90°</button><button data-phase-preset="180">180°</button><button data-phase-preset="270">270°</button><button data-phase-preset="360">360°</button></div></div>
+              <div class="control-group"><div class="control-label"><label for="phase-frequency">Frequenza comune</label><output id="phase-frequency-value">440 Hz</output></div><input id="phase-frequency" type="range" min="100" max="1000" step="10" value="440"><div class="range-ends"><span>100 Hz</span><span>1000 Hz</span></div></div>
+              <div class="control-group"><div class="control-label"><label for="amp-one">Ampiezza onda 1 · A₁</label><output id="amp-one-value">1,0</output></div><input id="amp-one" type="range" min="0.2" max="1.5" step="0.1" value="1"><div class="range-ends"><span>0,2</span><span>1,5</span></div></div>
+              <div class="control-group"><div class="control-label"><label for="amp-two">Ampiezza onda 2 · A₂</label><output id="amp-two-value">1,0</output></div><input id="amp-two" type="range" min="0.2" max="1.5" step="0.1" value="1"><div class="range-ends"><span>0,2</span><span>1,5</span></div></div>
+              <button class="button button-primary button-full" id="play-phase"><span class="play-icon">▶</span> Ascolta la risultante</button><p class="micro-note">Il suono viene generato nel browser. Non viene richiesto accesso al microfono.</p>
+            </div>
+            <div class="panel visualization-panel"><div class="panel-heading"><div><span class="eyebrow">RAPPRESENTAZIONE NEL TEMPO</span><h3>Le tre forme d'onda</h3></div><span class="plot-unit">ampiezza relativa</span></div><div class="chart-legend"><span><i class="legend-dot teal"></i> Onda 1</span><span><i class="legend-dot gold"></i> Onda 2</span><span><i class="legend-dot result"></i> Risultante</span></div><canvas id="phase-canvas" class="plot-canvas" aria-label="Grafico interattivo delle due onde e della loro risultante"></canvas><div class="chart-axis-label"><span>← tempo</span><span>2 cicli completi →</span></div><div class="result-readout"><div><span>AMPIEZZA RISULTANTE</span><strong id="result-amplitude">1,41</strong></div><div><span>RELAZIONE</span><strong id="phase-description">Quadratura</strong></div><div><span>FREQUENZA</span><strong id="result-frequency">440 Hz</strong></div></div><div class="formula-strip"><span>Per due sinusoidi della stessa frequenza</span><strong>A<sub>ris</sub> = √(A₁² + A₂² + 2A₁A₂ cos Δφ)</strong></div></div>
+          </div>
+          <div class="lab-expectation" id="phase-expectation"><div class="expectation-heading"><span class="eyebrow">RISULTATO ATTESO</span><h3 id="phase-expected-title">In quadratura</h3><p id="phase-expected-text">A 90° i segnali non sono né perfettamente concordi né in opposizione: la somma è intermedia.</p></div><div class="expectation-detail"><strong id="phase-expected-value">A<sub>ris</sub> = √2 A</strong><span id="phase-expected-condition">Per ampiezze uguali e frequenza comune.</span></div></div>
+          <div class="insight-grid"><article class="insight-card"><span class="insight-number">01</span><h3>Che cosa resta uguale?</h3><p>Se le frequenze sono identiche, entrambe le onde hanno lo stesso periodo. La frequenza non cambia quando modifichi soltanto la fase.</p></article><article class="insight-card"><span class="insight-number">02</span><h3>Che cosa cambia?</h3><p>Cambia la posizione relativa delle oscillazioni nel ciclo e, di conseguenza, il modo in cui i loro valori si sommano.</p></article><article class="insight-card"><span class="insight-number">03</span><h3>Osserva il caso limite</h3><p>Con ampiezze uguali, a 0° la risultante raddoppia; a 180° si annulla idealmente nel punto considerato.</p></article></div>
+        </div>
+
+        <div class="lab-view" id="lab-beats">
+          <div class="lab-title-row"><div><span class="tag tag-gold">LEZIONE 04 · BATTIMENTI</span><h2>Battimenti</h2><p>Imposta due frequenze vicine e osserva la pulsazione lenta prodotta dalla loro somma.</p></div><div class="lab-title-actions"><button class="text-button" data-review-from-lab="4">Ripassa teoria 04 →</button><div class="live-indicator"><span></span> CALCOLO AUTOMATICO</div></div></div>
+          <div class="lab-layout beat-layout">
+            <div class="panel controls-panel"><div class="panel-heading"><div><span class="eyebrow">PARAMETRI</span><h3>Due oscillatori</h3></div><span class="control-glyph">∿</span></div>
+              <div class="control-group"><div class="control-label"><label for="beat-f1">Frequenza 1 · f₁</label><output id="beat-f1-value">440 Hz</output></div><input id="beat-f1" type="range" min="200" max="600" step="1" value="440"><div class="range-ends"><span>200 Hz</span><span>600 Hz</span></div></div>
+              <div class="control-group"><div class="control-label"><label for="beat-f2">Frequenza 2 · f₂</label><output id="beat-f2-value">442 Hz</output></div><input id="beat-f2" type="range" min="200" max="600" step="1" value="442"><div class="range-ends"><span>200 Hz</span><span>600 Hz</span></div></div>
+              <div class="preset-row beat-presets"><button data-beat-preset="1">Δf = 1 Hz</button><button data-beat-preset="2" class="selected">Δf = 2 Hz</button><button data-beat-preset="5">Δf = 5 Hz</button><button data-beat-preset="8">Δf = 8 Hz</button></div>
+              <button class="button button-primary button-full" id="play-beats"><span class="play-icon">▶</span> Battimenti</button><p class="micro-note">Usa un volume moderato. I due toni vengono generati localmente nel browser.</p>
+            </div>
+            <div class="panel visualization-panel"><div class="panel-heading"><div><span class="eyebrow">INVILUPPO DELLA RISULTANTE</span><h3>La pulsazione nel tempo</h3></div><span class="plot-unit">ampiezza relativa</span></div><div class="chart-legend"><span><i class="legend-dot teal"></i> Inviluppo</span><span><i class="legend-dot gold"></i> Risultante (zoom)</span></div><canvas id="beat-canvas" class="plot-canvas beat-canvas" aria-label="Grafico dell'inviluppo dei battimenti"></canvas><div class="chart-axis-label"><span>0 s</span><span id="beat-time-span">2,0 s</span></div><div class="result-readout beat-readout"><div><span>FREQUENZA DI BATTIMENTO</span><strong id="beat-frequency">2 Hz</strong></div><div><span>PERIODO DEL BATTIMENTO</span><strong id="beat-period">0,50 s</strong></div><div><span>FREQUENZA MEDIA</span><strong id="beat-average">441 Hz</strong></div></div><div class="formula-strip"><span>Frequenze di battimento</span><strong>f<sub>b</sub> = |f₁ − f₂|</strong></div></div>
+          </div>
+          <div class="lab-expectation" id="beat-expectation"><div class="expectation-heading"><span class="eyebrow">RISULTATO ATTESO</span><h3 id="beat-expected-title">Pulsazione di 2 Hz</h3><p id="beat-expected-text">Con frequenze di 440 Hz e 442 Hz la relazione di fase cambia nel tempo: la somma diventa periodicamente più ampia e più debole.</p></div><div class="expectation-detail"><strong id="beat-expected-value">Un massimo ogni 0,50 s</strong><span id="beat-expected-condition">La frequenza media descrive l’oscillazione rapida; la differenza descrive la pulsazione.</span></div></div>
+          <div class="explain-panel"><div class="explain-icon">∿</div><div><h3>Che cosa stai osservando?</h3><p>Le due onde continuano a oscillare rapidamente, ma la loro relazione di fase cambia nel tempo perché le frequenze sono diverse. Quando i contributi si rinforzano, l'ampiezza della somma cresce; quando tendono a compensarsi, diminuisce. La frequenza di questa pulsazione è la differenza assoluta tra le frequenze.</p></div></div>
+        </div>
+
+        <div class="lab-view" id="lab-microphones">
+          <div class="lab-title-row"><div><span class="tag tag-teal">PROPAGAZIONE · FASE</span><h2>Posizionamento dei microfoni</h2><p>Trascina i microfoni nella scena. Il modello calcola i tempi di arrivo, la differenza di percorso e la fase relativa.</p></div><div class="lab-title-actions"><button class="text-button" data-review-from-lab="2">Ripassa teoria 02 →</button><button class="text-button" data-review-from-lab="3">Ripassa teoria 03 →</button><div class="live-indicator"><span></span> CALCOLO AUTOMATICO</div></div></div>
+          <div class="mic-lab-layout">
+            <div class="panel mic-scene-panel">
+              <div class="panel-heading"><div><span class="eyebrow">VISTA DALL'ALTO</span><h3>Sorgente e microfoni</h3></div><span class="plot-unit">area rappresentata: 8 × 5 m</span></div>
+              <div class="mic-scene-legend"><span><i class="legend-dot gold"></i> Sorgente</span><span><i class="legend-dot teal"></i> Microfono 1</span><span><i class="legend-dot blue"></i> Microfono 2</span><span><i class="legend-line"></i> Percorso</span></div>
+              <canvas id="mic-scene-canvas" class="mic-scene-canvas" aria-label="Scena dall'alto: trascina i due microfoni per modificarne la posizione"></canvas>
+              <div class="mic-scene-help">Trascina i microfoni oppure usa i controlli x/y. I cerchi indicano la lunghezza d’onda di riferimento; per un suono complesso o rumore non rappresentano tutte le componenti. I microfoni sono virtuali: il sito non accede al dispositivo.</div>
+              <div class="mic-position-grid">
+                <div class="mic-position-card">
+                  <div class="mic-position-head"><span class="mic-color mic-one"></span><strong>Microfono 1</strong><output id="mic1-coords">x 4,8 m · y 1,3 m</output></div>
+                  <div class="control-group"><div class="control-label"><label for="mic1-x">Posizione x</label><output id="mic1-x-value">4,8 m</output></div><input id="mic1-x" type="range" min="0.5" max="7.5" step="0.1" value="4.8"></div>
+                  <div class="control-group"><div class="control-label"><label for="mic1-y">Posizione y</label><output id="mic1-y-value">1,3 m</output></div><input id="mic1-y" type="range" min="0.5" max="4.5" step="0.1" value="1.3"></div>
+                </div>
+                <div class="mic-position-card">
+                  <div class="mic-position-head"><span class="mic-color mic-two"></span><strong>Microfono 2</strong><output id="mic2-coords">x 4,8 m · y 3,7 m</output></div>
+                  <div class="control-group"><div class="control-label"><label for="mic2-x">Posizione x</label><output id="mic2-x-value">4,8 m</output></div><input id="mic2-x" type="range" min="0.5" max="7.5" step="0.1" value="4.8"></div>
+                  <div class="control-group"><div class="control-label"><label for="mic2-y">Posizione y</label><output id="mic2-y-value">3,7 m</output></div><input id="mic2-y" type="range" min="0.5" max="4.5" step="0.1" value="3.7"></div>
+                </div>
+              </div>
+              <div class="mic-presets"><span>Posizioni di esempio</span><button class="text-button" data-mic-preset="equal">Stessa distanza</button><button class="text-button" data-mic-preset="quarter">Δr = λ/4</button><button class="text-button" data-mic-preset="half">Δr = λ/2</button></div>
+            </div>
+            <div class="panel mic-controls-panel">
+              <div class="panel-heading"><div><span class="eyebrow">SORGENTE</span><h3>Segnale emesso</h3></div></div>
+              <div class="control-group source-select-group"><div class="control-label"><label for="mic-source-type">Sorgente / modello di segnale</label></div><select id="mic-source-type" class="source-select">
+                  <optgroup label="Segnali di riferimento">
+                    <option value="sine">Generatore sinusoidale · tono puro</option>
+                    <option value="harmonic">Corda vibrante · modello armonico</option>
+                    <option value="noise">Rumore bianco · generato</option>
+                  </optgroup>
+                  <optgroup label="Registrazioni reali · ESC-10">
+                    <option value="dog">Abbaio di cane</option>
+                    <option value="rain">Pioggia</option>
+                    <option value="clock">Orologio · ticchettio</option>
+                    <option value="fire">Fuoco · crepitio</option>
+                    <option value="helicopter">Elicottero</option>
+                    <option value="chainsaw">Motosega</option>
+                  </optgroup>
+                </select>
+                <p class="field-help" id="mic-source-description">Una sola componente sinusoidale. La fase mostrata si riferisce a questa frequenza.</p>
+                <p class="mic-source-status" id="mic-source-status" role="status" aria-live="polite">Segnale generato nel browser.</p>
+                <div class="mic-source-credit" id="mic-source-credit"><strong>Registrazioni audio</strong><p>I campioni reali provengono dal sottoinsieme ESC-10 del dataset ESC-50. Richiedono una connessione Internet. Crediti e licenze sono riportati nel README.</p><a href="https://github.com/karolpiczak/ESC-50" target="_blank" rel="noopener noreferrer">Repository ESC-50 ↗</a></div></div>
+              <div class="control-group"><div class="control-label"><label for="mic-frequency" id="mic-frequency-label">Frequenza</label><output id="mic-frequency-value">1000 Hz</output></div><input id="mic-frequency" type="range" min="100" max="2000" step="10" value="1000"><div class="range-ends"><span>100 Hz</span><span>2000 Hz</span></div></div>
+              <div class="control-group"><div class="control-label"><label for="mic-speed">Velocità del suono</label><output id="mic-speed-value">344 m/s</output></div><input id="mic-speed" type="range" min="300" max="360" step="1" value="344"><div class="range-ends"><span>300 m/s</span><span>360 m/s</span></div></div>
+              <div class="control-group"><div class="control-label"><label for="mic-level">Pressione a 1 m (riferimento)</label><output id="mic-level-value">1,0 Pa</output></div><input id="mic-level" type="range" min="0.2" max="2" step="0.1" value="1"><div class="range-ends"><span>0,2 Pa</span><span>2,0 Pa</span></div></div>
+              <div class="mic-readout-grid">
+                <div><span>LUNGHEZZA D'ONDA</span><strong id="mic-wavelength">0,344 m</strong></div>
+                <div><span>DIFFERENZA DI PERCORSO</span><strong id="mic-delta-r">0,00 m</strong></div>
+                <div><span>DIFFERENZA TEMPORALE</span><strong id="mic-delta-t">0,00 ms</strong></div>
+                <div><span>FASE MIC 2 − MIC 1</span><strong id="mic-phase-delta">0°</strong></div>
+              </div>
+              <p class="mic-phase-note" id="mic-phase-note">I due segnali arrivano con la stessa fase.</p>
+              <div class="mic-expected" id="mic-expected"><span class="eyebrow">COME LEGGERE IL RISULTATO</span><h3 id="mic-expected-title">Stessa distanza</h3><p id="mic-expected-text">I due percorsi hanno la stessa lunghezza: i segnali arrivano nello stesso istante e con la stessa fase di riferimento.</p><div class="mic-expected-result"><strong id="mic-expected-value">Aᵣᵢₛ = A₁ + A₂</strong><span id="mic-expected-condition">Nel caso di un tono puro in fase; il valore efficace è riportato nella misura qui sotto.</span></div></div>
+              <div class="mic-audio-controls">
+                <button class="button button-quiet button-full" id="play-mic-source">Anteprima della sorgente</button>
+                <button class="button button-primary button-full" id="play-mic-sum">Ascolta la somma</button>
+                <div class="mic-audio-row"><button class="button button-quiet" id="play-mic1">Solo MIC 1</button><button class="button button-quiet" id="play-mic2">Solo MIC 2</button></div>
+              </div>
+            </div>
+          </div>
+          <div class="panel visualization-panel mic-signal-panel">
+            <div class="panel-heading"><div><span class="eyebrow">SEGNALI RICEVUTI</span><h3>Confronto nel tempo</h3></div><span class="plot-unit">stesso riferimento temporale</span></div>
+            <div class="chart-legend"><span><i class="legend-dot teal"></i> MIC 1</span><span><i class="legend-dot blue"></i> MIC 2</span><span><i class="legend-dot result"></i> Somma</span></div>
+            <canvas id="mic-signal-canvas" class="plot-canvas mic-signal-canvas" aria-label="Grafico dei segnali ricevuti dai due microfoni e della loro somma"></canvas>
+            <div class="chart-axis-label"><span>0</span><span id="mic-chart-span">tempo · 3 periodi</span></div>
+            <p class="mic-chart-note">Il grafico usa come riferimento l'arrivo al MIC 1. Il segnale del MIC 2 è spostato in base alla differenza dei tempi di percorrenza.</p>
+            <div class="result-readout mic-result-readout">
+              <div><span>DISTANZA MIC 1</span><strong id="mic-r1">3,89 m</strong></div>
+              <div><span>PRESSIONE MIC 1</span><strong id="mic-a1">0,257 Pa</strong></div>
+              <div><span>DISTANZA MIC 2</span><strong id="mic-r2">3,89 m</strong></div>
+              <div><span>PRESSIONE MIC 2</span><strong id="mic-a2">0,257 Pa</strong></div>
+              <div><span>VALORE EFFICACE DELLA SOMMA</span><strong id="mic-result-amplitude">0,514 Pa</strong></div>
+            </div>
+            <div class="formula-strip"><span>Ritardo e differenza di fase</span><strong>Δt = Δr / c &nbsp; · &nbsp; Δφ = −2π f Δt (rad)</strong></div>
+          </div>
+          <div class="mic-model-note"><strong>Modello utilizzato</strong><p>Sorgente puntiforme in campo libero, microfoni omnidirezionali ideali e propagazione senza riflessioni. La pressione diminuisce con la distanza secondo un modello proporzionale a 1/r. La scena è una vista dall’alto: non rappresenta la propagazione reale in due dimensioni. Per il tono puro la fase è quella della sinusoide; per il suono armonico è riferita alla fondamentale; per il rumore e le registrazioni è soltanto una fase di riferimento, perché il segnale contiene molte frequenze.</p><p>Quando scegli un campione reale, il file viene trattato come segnale emesso al tempo zero. La simulazione aggiunge ritardo e attenuazione in base alla posizione dei microfoni; non ricostruisce la sorgente fisica originale né la stanza in cui è avvenuta la registrazione.</p></div>
+        </div>
+      </section>
+
+      <section class="view" id="view-review">
+        <div class="page-heading"><div class="eyebrow"><span class="eyebrow-line"></span> RIPASSO DELLE LEZIONI</div><h1>Teoria e <span>verifica.</span></h1><p class="intro">Rivedi i concetti, controlla le relazioni e poi prova a rispondere. Le spiegazioni seguono il materiale delle quattro lezioni.</p></div>
+        <div class="review-study panel">
+          <div class="review-study-head"><div><span class="eyebrow">SCHEDE DI RIPASSO</span><h2>Seleziona una lezione</h2></div><span class="muted small">Definizioni · formule · esempi · attenzione</span></div>
+          <div class="review-tabs" role="tablist" aria-label="Seleziona la lezione da ripassare">
+            <button class="review-tab active" data-review-topic="all" role="tab" aria-selected="true">Tutte</button>
+            <button class="review-tab" data-review-topic="1" role="tab" aria-selected="false">01 · Suono</button>
+            <button class="review-tab" data-review-topic="2" role="tab" aria-selected="false">02 · Onda</button>
+            <button class="review-tab" data-review-topic="3" role="tab" aria-selected="false">03 · Fase</button>
+            <button class="review-tab" data-review-topic="4" role="tab" aria-selected="false">04 · Battimenti</button>
+          </div>
+          <div id="review-theory-content" class="review-theory-grid" aria-live="polite"></div>
+        </div>
+        <div class="review-quiz-section">
+          <div class="review-quiz-heading"><div><span class="eyebrow">AUTOVERIFICA</span><h2>Controlla quello che ricordi</h2><p>Puoi ripassare tutto il percorso oppure concentrarti su una sola lezione.</p></div><div class="quiz-filter-control"><label for="review-filter">Domande su</label><select id="review-filter"><option value="all">Tutte le lezioni</option><option value="1">Lezione 01 · Il suono</option><option value="2">Lezione 02 · L’onda</option><option value="3">Lezione 03 · La fase</option><option value="4">Lezione 04 · Battimenti</option></select><button class="button button-primary" id="review-start">Avvia il test</button></div></div>
+          <div class="review-layout"><div class="panel quiz-panel"><div class="quiz-top"><div><span class="eyebrow">SESSIONE DI RIPASSO</span><h2 id="quiz-title">Concetti fondamentali</h2></div><span class="quiz-counter" id="quiz-counter">1 / 12</span></div><div class="quiz-progress"><span id="quiz-progress-fill"></span></div><div class="quiz-meta"><span id="quiz-topic">LEZIONE 01 · FONDAMENTI</span><span id="quiz-difficulty">BASE</span></div><h3 class="question-text" id="question-text">Caricamento della domanda…</h3><div class="answers" id="answer-list"></div><div class="quiz-feedback" id="quiz-feedback" hidden></div><div class="quiz-actions"><button class="button button-quiet" id="skip-question">Salta questa domanda</button><button class="button button-primary" id="next-question" disabled>Prossima domanda <span>→</span></button></div></div><aside class="panel quiz-aside"><span class="eyebrow">COME FUNZIONA</span><h3>Leggi la spiegazione dopo ogni risposta.</h3><p>Le domande sono estratte dalla banca del percorso. Se selezioni una singola lezione, il test usa soltanto le domande di quel modulo.</p><div class="quiz-key"><div><span class="key-icon correct-key">✓</span><span><b>Risposta corretta</b><small>Il concetto è stato compreso.</small></span></div><div><span class="key-icon wrong-key">×</span><span><b>Risposta da rivedere</b><small>Leggi la spiegazione e riprova.</small></span></div><div><span class="key-icon hint-key">i</span><span><b>Un passo alla volta</b><small>Puoi tornare alle schede teoriche.</small></span></div></div><div class="quiz-session-score"><span>RISULTATO SESSIONE</span><strong id="session-score">—</strong><small id="session-score-label">Completa le domande per vedere il risultato.</small></div><button class="button button-outline button-full" id="restart-quiz">Ricomincia il test</button></aside></div>
+        </div>
+      </section>
+
+      <section class="view" id="view-formulas">
+        <div class="page-heading"><div class="eyebrow"><span class="eyebrow-line"></span> CONSULTAZIONE RAPIDA</div><h1>Formulario <span>di acustica.</span></h1><p class="intro">Le relazioni delle quattro lezioni e dei laboratori, con il significato dei simboli e le unità di misura.</p></div>
+        <div class="formula-list">
+          <article class="formula-entry"><div class="formula-entry-head"><span class="formula-index">01</span><div><h3>Periodo e frequenza</h3><p>Il periodo è il reciproco della frequenza.</p></div><span class="formula-lesson">LEZ. 02</span></div><div class="formula-expression">f = <span class="fraction"><i>1</i><b>T</b></span> <span class="formula-sep">·</span> T = <span class="fraction"><i>1</i><b>f</b></span></div><div class="formula-units">f in hertz (Hz) · T in secondi (s)</div></article>
+          <article class="formula-entry"><div class="formula-entry-head"><span class="formula-index">02</span><div><h3>Velocità di propagazione</h3><p>Collega frequenza e lunghezza d'onda.</p></div><span class="formula-lesson">LEZ. 02</span></div><div class="formula-expression">v = f λ</div><div class="formula-units">v in m/s · f in Hz · λ in metri (m)</div></article>
+          <article class="formula-entry"><div class="formula-entry-head"><span class="formula-index">03</span><div><h3>Pulsazione</h3><p>La velocità di avanzamento della fase.</p></div><span class="formula-lesson">LEZ. 03</span></div><div class="formula-expression">ω = 2πf = <span class="fraction"><i>2π</i><b>T</b></span></div><div class="formula-units">ω in radianti al secondo (rad/s)</div></article>
+          <article class="formula-entry"><div class="formula-entry-head"><span class="formula-index">04</span><div><h3>Fase istantanea</h3><p>La posizione angolare dell'oscillazione all'istante t.</p></div><span class="formula-lesson">LEZ. 03</span></div><div class="formula-expression">φ(t) = ωt + φ<sub>0</sub></div><div class="formula-units">φ₀ è la fase iniziale · t in secondi</div></article>
+          <article class="formula-entry"><div class="formula-entry-head"><span class="formula-index">05</span><div><h3>Fase e ritardo</h3><p>Per due sinusoidi della stessa frequenza con ritardo costante.</p></div><span class="formula-lesson">LEZ. 03</span></div><div class="formula-expression">|Δφ| = 2π f τ = ωτ</div><div class="formula-units">τ è il ritardo temporale espresso in secondi</div></article>
+          <article class="formula-entry"><div class="formula-entry-head"><span class="formula-index">06</span><div><h3>Sovrapposizione</h3><p>Le variazioni di pressione si sommano nello stesso punto e istante.</p></div><span class="formula-lesson">LEZ. 03</span></div><div class="formula-expression">p′<sub>ris</sub>(t) = p′<sub>1</sub>(t) + p′<sub>2</sub>(t)</div><div class="formula-units">Somma algebrica delle variazioni rispetto all'equilibrio</div></article>
+          <article class="formula-entry formula-entry-highlight"><div class="formula-entry-head"><span class="formula-index">07</span><div><h3>Frequenza di battimento</h3><p>La pulsazione lenta nasce dalla differenza tra frequenze vicine.</p></div><span class="formula-lesson">LEZ. 04</span></div><div class="formula-expression">f<sub>b</sub> = |f<sub>1</sub> − f<sub>2</sub>|</div><div class="formula-units">fᵦ in hertz (Hz) · Tᵦ = 1/fᵦ, se fᵦ ≠ 0</div></article>
+          <article class="formula-entry"><div class="formula-entry-head"><span class="formula-index">08</span><div><h3>Tempo di propagazione</h3><p>Tempo necessario per percorrere una distanza.</p></div><span class="formula-lesson">LAB. MIC</span></div><div class="formula-expression">τ = <span class="fraction"><i>r</i><b>c</b></span></div><div class="formula-units">r in metri (m) · c in m/s · τ in secondi (s)</div></article>
+          <article class="formula-entry"><div class="formula-entry-head"><span class="formula-index">09</span><div><h3>Fase e differenza di percorso</h3><p>Per due percorsi della stessa onda nel medesimo mezzo.</p></div><span class="formula-lesson">LAB. MIC</span></div><div class="formula-expression">|Δφ| = 2π <span class="fraction"><i>|Δr|</i><b>λ</b></span></div><div class="formula-units">Δr in metri · λ in metri · fase in radianti</div></article>
+          <article class="formula-entry"><div class="formula-entry-head"><span class="formula-index">10</span><div><h3>Conteggio dei cicli</h3><p>Calcolare la frequenza da un numero di cicli osservati.</p></div><span class="formula-lesson">LEZ. 01</span></div><div class="formula-expression">f = <span class="fraction"><i>N</i><b>Δt</b></span></div><div class="formula-units">N è il numero di cicli · Δt in secondi · f in Hz</div></article>
+          <article class="formula-entry"><div class="formula-entry-head"><span class="formula-index">11</span><div><h3>Frequenza media</h3><p>Frequenza dell’oscillazione rapida nella somma di due toni.</p></div><span class="formula-lesson">LEZ. 04</span></div><div class="formula-expression">f<sub>m</sub> = <span class="fraction"><i>f<sub>1</sub> + f<sub>2</sub></i><b>2</b></span></div><div class="formula-units">Media aritmetica delle due frequenze</div></article>
+          <article class="formula-entry"><div class="formula-entry-head"><span class="formula-index">12</span><div><h3>Periodo del battimento</h3><p>Intervallo tra due massimi consecutivi dell’inviluppo.</p></div><span class="formula-lesson">LEZ. 04</span></div><div class="formula-expression">T<sub>b</sub> = <span class="fraction"><i>1</i><b>f<sub>b</sub></b></span></div><div class="formula-units">Tᵦ in secondi · fᵦ in hertz · vale se fᵦ ≠ 0</div></article>
+          <article class="formula-entry"><div class="formula-entry-head"><span class="formula-index">13</span><div><h3>Inviluppo dei battimenti</h3><p>Per due sinusoidi di uguale ampiezza e fase iniziale nulla.</p></div><span class="formula-lesson">LEZ. 04</span></div><div class="formula-expression">A<sub>inv</sub>(t) = 2A |cos(π(f<sub>1</sub> − f<sub>2</sub>)t)|</div><div class="formula-units">Ampiezza dell’inviluppo in funzione del tempo</div></article>
+          <article class="formula-entry"><div class="formula-entry-head"><span class="formula-index">14</span><div><h3>Somma di due sinusoidi</h3><p>Forma ottenuta con la formula di prostaferesi, per ampiezze uguali.</p></div><span class="formula-lesson">LEZ. 04</span></div><div class="formula-expression formula-expression-stacked"><span>p<sub>ris</sub>(t) = 2A sin(2πf<sub>m</sub>t)</span><span>· cos(π(f<sub>1</sub> − f<sub>2</sub>)t)</span></div><div class="formula-units">Il seno descrive l’oscillazione rapida; il coseno descrive il fattore lento</div></article>
+        </div>
+        <div class="formula-note"><span>i</span><p>Attenzione alle unità: se la pulsazione è espressa in rad/s, il tempo deve essere espresso in secondi. Prima di sostituire i valori nelle formule, converti sempre millisecondi e kilohertz quando necessario.</p></div>
+      </section>
+
+      <section class="view" id="view-lesson">
+        <div class="page-heading"><div class="eyebrow"><span class="eyebrow-line"></span> ARCHIVIO DEL PERCORSO</div><h1 id="lesson-title">Lezione</h1><p class="intro" id="lesson-description"></p></div>
+        <div class="lesson-detail-grid"><article class="panel lesson-summary"><span class="eyebrow">IN QUESTA LEZIONE</span><div id="lesson-topics"></div></article><article class="panel lesson-link-panel"><span class="eyebrow">RIPASSO CONSIGLIATO</span><h3>Metti alla prova i concetti.</h3><p>Passa alla sessione di ripasso e verifica quanto ricordi.</p><button class="button button-primary" data-view="review">Apri il ripasso →</button></article></div>
+      </section>
+
+      <footer class="main-footer global-footer"><span>SONORA <b>•</b> Laboratorio personale di acustica</span><span>Progressi conservati localmente nel browser.</span></footer>
+    </main>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
