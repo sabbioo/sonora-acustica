@@ -131,16 +131,10 @@ Le registrazioni non sono toni puri: il controllo della frequenza nel laboratori
 - Ampliate le schede di teoria con spiegazioni estese ed esempi.
 - Corretto il formulario: le formule lunghe si adattano alla larghezza della scheda e la relazione di prostaferesi è disposta su due righe.
 
-
-## Pubblicazione
-
-Il progetto è statico e può essere pubblicato con GitHub Pages. Per mantenere il repository ordinato, usare il nome `sonora-acustica` e caricare il contenuto di questa cartella nella radice del repository. In GitHub: **Settings → Pages → Deploy from a branch → main → /(root)**.
-
-Prima di pubblicare, scegliere e aggiungere una licenza per il codice e per i contenuti originali. I campioni audio mantengono le licenze e le attribuzioni indicate nella sezione precedente.
-
 ## Licenze
 
 SONORA contiene codice e materiali didattici con licenze distinte.
 Consulta [LICENSES.md](LICENSES.md) e
 [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md)
 per i rispettivi ambiti e le attribuzioni.
+
